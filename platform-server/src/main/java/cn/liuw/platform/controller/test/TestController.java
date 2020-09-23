@@ -3,14 +3,13 @@ package cn.liuw.platform.controller.test;
 
 import cn.liuw.platform.common.base.controller.BaseController;
 import cn.liuw.platform.common.base.response.ResponseData;
-import cn.liuw.platform.service.test.TestSortService;
+import cn.liuw.platform.db.domain.system.request.ValidObjectRequest;
+import cn.liuw.platform.service.test.TestService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @author liuw
@@ -23,13 +22,21 @@ import org.springframework.web.bind.annotation.RestController;
 public class TestController extends BaseController {
 
     @Autowired
-    private TestSortService testSortService;
+    private TestService testService;
 
     @ApiOperation(value = "排序")
-    @GetMapping("/sort}")
+    @GetMapping("/sort")
     public ResponseData sort() {
-        testSortService.testSort();
+        testService.testSort();
         return success();
     }
+
+    @ApiOperation(value = "字段校验")
+    @PostMapping("/valid")
+    public ResponseData validObject(@RequestBody ValidObjectRequest validObjectRequest) {
+        String result = testService.validObject(validObjectRequest);
+        return success(result);
+    }
+    
     
 }
