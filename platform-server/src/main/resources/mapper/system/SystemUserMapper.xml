@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.liuw.platform.db.mapper.system.SystemUserMapper">
+
+	<resultMap id="UserResponseResultMap" type="cn.liuw.platform.db.domain.system.response.SystemUserResponse" >
+		<id column="id" property="id" jdbcType="BIGINT" />
+		<result column="username" property="username" jdbcType="VARCHAR" />
+		<result column="id_card" property="idCard" jdbcType="VARCHAR" />
+		<result column="sex" property="sex" jdbcType="VARCHAR" />
+		<result column="phone" property="phone" jdbcType="VARCHAR" />
+	</resultMap>
+	
+	<select id="selectByStatus" resultMap="UserResponseResultMap">
+		SELECT
+			id,
+			username,
+			id_card,
+			sex,
+			phone
+		FROM
+			system_user 
+		WHERE
+			`status` = #{status}
+    </select>
+
+	<select id="selectByUsername" resultType="cn.liuw.platform.db.domain.system.SystemUser">
+		SELECT
+			username,
+			password,
+			id_card,
+			sex,
+			org_code,
+			phone
+		FROM
+			system_user 
+		WHERE
+			`status` = 1
+			and username = #{param1}
+    </select>
+	
+</mapper>

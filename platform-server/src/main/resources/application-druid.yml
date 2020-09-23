@@ -1,0 +1,19 @@
+spring:
+  autoconfigure:
+    exclude: com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceAutoConfigure  # 为了某些版本的springboot  @SpringBootApplication(exclude= {DataSourceAutoConfiguration.class}) 无法生效
+  # 数据源配置
+  datasource:
+    dynamic:
+      primary: master
+      strict: false
+      datasource: 
+        master:
+          url: jdbc:mysql://101.201.254.58:3306/management?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
+          username: root
+          password: 1qazXSW@
+          driver-class-name: com.mysql.cj.jdbc.Driver
+        slave:
+          url: jdbc:mysql://223.221.8.101:8082/ottdb1?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
+          username: Cditv
+          password: CD@.Ipt@v028
+          driver-class-name: com.mysql.cj.jdbc.Driver

@@ -1,0 +1,41 @@
+# 环境配置
+server:
+  # 端口
+  port: 9020
+  servlet:
+    # 应用的访问路径
+    context-path: /
+
+# Spring 配置
+spring:
+  # 基础信息
+  application:
+    name: platform-server
+  # 激活配置
+  profiles:
+    active: druid
+
+  # security config 【spring boot 需要引入对应依赖生效】
+  security:
+    user:
+      name: user
+      password: 123456
+
+  # redis config
+  redis:
+    host: 101.201.254.58
+    port: 6379
+    password: p@ssw0rd
+
+  cache:
+    type: redis
+
+mybatis-plus:
+  mapper-locations: classpath:mapper/**/*.xml
+
+# mybatis-plus 控制台日志
+logging:
+  level:
+    cn.wind.boot.db.mapper : debug
+  file:
+    path: D:\Home\demo
