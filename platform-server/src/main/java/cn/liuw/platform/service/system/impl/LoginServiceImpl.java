@@ -59,4 +59,18 @@ public class LoginServiceImpl implements LoginService {
         }
         throw new LoginException("用户已登出或登录信息不存在！");
     }
+
+    @Override
+    public String getLoginUserName(String token) {
+        String username = "";
+        String loginUserKey = CacheConstants.USER_TOKEN + token;
+        // 根据用户名查询用户信息
+        if(redisUtil.hasKey(loginUserKey)) {
+            LoginUser loginUser = (LoginUser)redisUtil.get(loginUserKey);
+            username = loginUser.getUsername();
+        }
+        return username;
+    }
+
+
 }

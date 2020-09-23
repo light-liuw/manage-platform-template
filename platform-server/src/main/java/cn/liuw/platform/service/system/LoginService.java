@@ -23,4 +23,10 @@ public interface LoginService {
      */
     void loginOut(String token);
 
+    /**
+     * 根据 token 获取缓存中的用户名
+     *
+     */
+    String getLoginUserName(String token);
+
 }

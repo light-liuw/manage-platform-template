@@ -42,4 +42,11 @@ public class LoginController extends BaseController {
         loginService.loginOut(token);
         return success("用户登出成功！");
     }
+
+    @ApiOperation(value = "根据token查询用户名")
+    @GetMapping("/name/{token}")
+    public ResponseData getLoginUserName(@PathVariable("token") @NotBlank String token) {
+        String username = loginService.getLoginUserName(token);
+        return success(username);
+    }
 }
