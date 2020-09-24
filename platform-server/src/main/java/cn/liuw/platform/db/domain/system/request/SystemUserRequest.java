@@ -15,4 +15,6 @@ public class SystemUserRequest extends BaseRequest {
     private String username;
     
     private String status;
+    
+    private String orgCode;
 }

@@ -35,7 +35,7 @@ public class SystemUserController extends BaseController {
         return success(systemUserService.getById(id));
     }
 
-    @ApiOperation(value = "新增用户信息")
+    @ApiOperation(value = "新增用户")
     @PostMapping("/add")
     public ResponseData add(@RequestBody @Valid SystemUser systemUser) {
         systemUserService.insert(systemUser);
@@ -50,8 +50,15 @@ public class SystemUserController extends BaseController {
 
     @ApiOperation(value = "分页查询")
     @PostMapping("/page")
-    public ResponseData getByPage(@RequestBody SystemUserRequest systemUserRequest) {
-        IPage<SystemUserResponse> page = systemUserService.getByPage(systemUserRequest);
+    public ResponseData findByPage(@RequestBody SystemUserRequest systemUserRequest) {
+        IPage<SystemUserResponse> page = systemUserService.findByPage(systemUserRequest);
         return success(page.getRecords(), page.getTotal());
+    }
+
+    @ApiOperation(value = "修改用户信息")
+    @PostMapping("/update")
+    public ResponseData update(@RequestBody SystemUser systemUser) {
+        systemUserService.update(systemUser);
+        return success();
     }
 }

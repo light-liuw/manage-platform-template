@@ -40,4 +40,5 @@ public interface SystemUserMapper extends BaseMapper<SystemUser> {
      * @return
      */
     SystemUser selectByUsername(String username);
+    
 }

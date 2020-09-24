@@ -66,7 +66,7 @@ public class LoginServiceImpl implements LoginService {
         String loginUserKey = CacheConstants.USER_TOKEN + token;
         // 根据用户名查询用户信息
         if(redisUtil.hasKey(loginUserKey)) {
-            LoginUser loginUser = (LoginUser)redisUtil.get(loginUserKey);
+            LoginUser loginUser = new Gson().fromJson((String) redisUtil.get(loginUserKey), LoginUser.class);
             username = loginUser.getUsername();
         }
         return username;

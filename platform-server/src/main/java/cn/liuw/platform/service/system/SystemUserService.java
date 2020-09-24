@@ -49,7 +49,7 @@ public interface SystemUserService {
      * 
      * @return
      */
-    IPage<SystemUserResponse> getByPage(SystemUserRequest systemUserRequest);
+    IPage<SystemUserResponse> findByPage(SystemUserRequest systemUserRequest);
 
     /**
      * 根据用户名查询用户信息

@@ -16,9 +16,13 @@ public class LoginUser implements Serializable {
     private static final long serialVersionUID = 8663737308075230115L;
 
     private String username;
+    
     private String idCard;
+    
     private String sex;
+    
     private String orgCode;
+    
     private String phone;
     
 }
