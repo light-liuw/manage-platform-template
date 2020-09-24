@@ -1,5 +1,7 @@
 package cn.liuw.platform.common.util;
 
+import java.util.UUID;
+
 /**
  * @author liuw
  * @date 2020-09-01
@@ -16,5 +18,9 @@ public class CodeUtil {
         // md5 加密32位大写
         return MD5Util.md5Encrypt32Upper(username);
         
+    }
+    
+    public static String getUUID() {
+        return UUID.randomUUID().toString().replaceAll("-","").toUpperCase();
     }
 }

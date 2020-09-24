@@ -47,6 +47,18 @@ public class Swagger2Config {
                 .globalOperationParameters(getParameterList());
     }
 
+    @Bean
+    public Docket createMessageApi() {
+        return new Docket(DocumentationType.SWAGGER_2)
+                .apiInfo(apiInfo())
+                .groupName("消息管理")
+                .select()
+                .apis(RequestHandlerSelectors.basePackage("cn.liuw.platform.controller.message"))
+                .paths(PathSelectors.any())
+                .build()
+                .globalOperationParameters(getParameterList());
+    }
+
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
                 .title("Swagger2构建RESTful APIs")

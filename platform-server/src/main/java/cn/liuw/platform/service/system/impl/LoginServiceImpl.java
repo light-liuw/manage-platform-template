@@ -42,7 +42,7 @@ public class LoginServiceImpl implements LoginService {
             
             String token = CodeUtil.getUserToken(loginUser.getUsername());
             String loginUserKey = CacheConstants.USER_TOKEN + token;
-            redisUtil.set(loginUserKey, new Gson().toJson(loginUser), 30*60);
+            redisUtil.set(loginUserKey, new Gson().toJson(loginUser), 60*60*24);
             return token;
         }
         throw new LoginException("用户名或密码错误！");
