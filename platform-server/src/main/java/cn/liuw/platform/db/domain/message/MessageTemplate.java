@@ -31,6 +31,8 @@ public class MessageTemplate implements Serializable {
     
     private String href;
     
+    private String status;
+    
     private String sendCycle;
     
     private String channelType;

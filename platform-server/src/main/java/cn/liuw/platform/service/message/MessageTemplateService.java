@@ -12,4 +12,9 @@ public interface MessageTemplateService {
      * 新增
      */
     void insert(MessageTemplate messageTemplate);
+
+    /**
+     * 发布
+     */
+    void release(Long id);
 }
