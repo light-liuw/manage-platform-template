@@ -37,6 +37,11 @@ public class TestController extends BaseController {
         String result = testService.validObject(validObjectRequest);
         return success(result);
     }
-    
+
+    @ApiOperation(value = "post-测试")
+    @PostMapping("/post")
+    public ResponseData post() {
+        return success();
+    }
     
 }

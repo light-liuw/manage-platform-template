@@ -41,6 +41,11 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
             return true;
         }
 
+        // 如果测试请求放过
+        if (request.getRequestURI().startsWith("/test")) {
+            return true;
+        }
+
         // 如果是登录放过
         if (request.getRequestURI().startsWith("/user/login")) {
             return true;
