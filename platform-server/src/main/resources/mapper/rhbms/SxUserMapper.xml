@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.liuw.platform.db.mapper.rhbms.SxUserMapper">
+	
+	<select id="selectUserXmlList" resultType="cn.liuw.platform.db.domain.rhbms.response.SxUserXmlResponse">
+		SELECT
+			service_id,
+			box_code,
+			accept_city,
+			f_linkman,
+			contact_phone,
+			contact_address,
+			oper_code,
+			old_bos_code,
+			prod_id,
+			para_value,
+			user_vip
+		FROM
+			t_sx_user
+    </select>
+	
+</mapper>

@@ -24,10 +24,34 @@ import java.util.List;
 public class Swagger2Config {
 
     @Bean
+    public Docket createMessageApi() {
+        return new Docket(DocumentationType.SWAGGER_2)
+                .apiInfo(apiInfo())
+                .groupName("10_消息管理")
+                .select()
+                .apis(RequestHandlerSelectors.basePackage("cn.liuw.platform.controller.message"))
+                .paths(PathSelectors.any())
+                .build()
+                .globalOperationParameters(getParameterList());
+    }
+
+    @Bean
+    public Docket createPukkaApi() {
+        return new Docket(DocumentationType.SWAGGER_2)
+                .apiInfo(apiInfo())
+                .groupName("80_pukka")
+                .select()
+                .apis(RequestHandlerSelectors.basePackage("cn.liuw.platform.controller.pukka"))
+                .paths(PathSelectors.any())
+                .build()
+                .globalOperationParameters(getParameterList());
+    }
+
+    @Bean
     public Docket createTestApi() {
         return new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(apiInfo())
-                .groupName("测试")
+                .groupName("90_测试")
                 .select()
                 .apis(RequestHandlerSelectors.basePackage("cn.liuw.platform.controller.test"))
                 .paths(PathSelectors.any())
@@ -39,21 +63,9 @@ public class Swagger2Config {
     public Docket createSystemApi() {
         return new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(apiInfo())
-                .groupName("系统管理")
+                .groupName("00_系统管理")
                 .select()
                 .apis(RequestHandlerSelectors.basePackage("cn.liuw.platform.controller.system"))
-                .paths(PathSelectors.any())
-                .build()
-                .globalOperationParameters(getParameterList());
-    }
-
-    @Bean
-    public Docket createMessageApi() {
-        return new Docket(DocumentationType.SWAGGER_2)
-                .apiInfo(apiInfo())
-                .groupName("消息管理")
-                .select()
-                .apis(RequestHandlerSelectors.basePackage("cn.liuw.platform.controller.message"))
                 .paths(PathSelectors.any())
                 .build()
                 .globalOperationParameters(getParameterList());
