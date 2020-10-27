@@ -9,7 +9,6 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
  * @author liuw
  * @date 2020/8/20
  */
-//Spring boot方式
 @EnableTransactionManagement
 @Configuration
 public class MybatisPlusConfig {

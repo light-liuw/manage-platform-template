@@ -30,7 +30,7 @@ public class MessageTemplateServiceImpl implements MessageTemplateService {
     public void insert(MessageTemplate messageTemplate) {
         HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
         LoginUser loginUser = UserUtil.getLoginUser(request);
-        messageTemplate.setStatus("1");
+        messageTemplate.setStatus(1);
         messageTemplate.setCode(CodeUtil.getUUID());
         messageTemplate.setCreateName(loginUser.getUsername());
         messageTemplate.setCreateTime(new Date());
@@ -52,7 +52,7 @@ public class MessageTemplateServiceImpl implements MessageTemplateService {
             throw new BusinessException("消息模板状态不是发布中" );
         }
         // 修改状态发布消息
-        messageTemplate.setStatus("2");
+        messageTemplate.setStatus(2);
         messageTemplateMapper.updateById(messageTemplate);
         // 消息推进队列
         // pushMessageToQueue();
