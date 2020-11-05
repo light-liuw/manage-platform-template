@@ -1,6 +1,6 @@
 package cn.liuw.platform.common.util;
 
-import cn.liuw.platform.common.constant.CacheConstants;
+import cn.liuw.platform.common.constant.CacheConstant;
 import cn.liuw.platform.db.domain.system.response.LoginUser;
 
 import javax.servlet.http.HttpServletRequest;
@@ -19,7 +19,7 @@ public class UserUtil {
      */
     public static LoginUser getLoginUser(HttpServletRequest request) {
         String token = request.getHeader("Authorization");
-        return (LoginUser) request.getAttribute(CacheConstants.USER_ATTRIBUTE + token);
+        return (LoginUser) request.getAttribute(CacheConstant.USER_ATTRIBUTE + token);
     }
 
 }

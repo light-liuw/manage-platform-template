@@ -2,7 +2,7 @@ package cn.liuw.platform.service.system.impl;
 
 
 import cn.liuw.platform.common.base.exception.LoginException;
-import cn.liuw.platform.common.constant.CacheConstants;
+import cn.liuw.platform.common.constant.CacheConstant;
 import cn.liuw.platform.common.util.CodeUtil;
 import cn.liuw.platform.common.util.RedisUtil;
 import cn.liuw.platform.db.domain.system.SystemUser;
@@ -41,7 +41,7 @@ public class LoginServiceImpl implements LoginService {
             loginUser.setPhone(systemUser.getPhone());
             
             String token = CodeUtil.getUserToken(loginUser.getUsername());
-            String loginUserKey = CacheConstants.USER_TOKEN + token;
+            String loginUserKey = CacheConstant.USER_TOKEN + token;
             redisUtil.set(loginUserKey, new Gson().toJson(loginUser), 60*60*24);
             return token;
         }
@@ -51,7 +51,7 @@ public class LoginServiceImpl implements LoginService {
     @Override
     public void loginOut(String token) {
         // 拼接 redis key
-        String loginUserKey = CacheConstants.USER_TOKEN + token;
+        String loginUserKey = CacheConstant.USER_TOKEN + token;
         // 根据用户名查询用户信息
         if(redisUtil.hasKey(loginUserKey)) {
             redisUtil.del(loginUserKey);
@@ -63,7 +63,7 @@ public class LoginServiceImpl implements LoginService {
     @Override
     public String getLoginUserName(String token) {
         String username = "";
-        String loginUserKey = CacheConstants.USER_TOKEN + token;
+        String loginUserKey = CacheConstant.USER_TOKEN + token;
         // 根据用户名查询用户信息
         if(redisUtil.hasKey(loginUserKey)) {
             LoginUser loginUser = new Gson().fromJson((String) redisUtil.get(loginUserKey), LoginUser.class);

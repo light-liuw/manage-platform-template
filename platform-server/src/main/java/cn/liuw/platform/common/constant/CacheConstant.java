@@ -6,7 +6,7 @@ package cn.liuw.platform.common.constant;
  * @author liuw
  * @date 2020-09-01
  */
-public class CacheConstants {
+public class CacheConstant {
     
     /**
      * redis用户token前缀

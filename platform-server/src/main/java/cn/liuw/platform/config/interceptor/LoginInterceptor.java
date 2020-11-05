@@ -1,7 +1,7 @@
 package cn.liuw.platform.config.interceptor;
 
 import cn.liuw.platform.common.base.response.ResponseData;
-import cn.liuw.platform.common.constant.CacheConstants;
+import cn.liuw.platform.common.constant.CacheConstant;
 import cn.liuw.platform.common.util.RedisUtil;
 import cn.liuw.platform.db.domain.system.response.LoginUser;
 import com.google.gson.Gson;
@@ -65,11 +65,11 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
             log.info("------非法登入(token为空)-----");
             return false;
         } else {
-            String loginUserKey = CacheConstants.USER_TOKEN + token;
+            String loginUserKey = CacheConstant.USER_TOKEN + token;
             boolean exists = redisUtil.hasKey(loginUserKey);
             if (exists) {
                 LoginUser loginUser = new Gson().fromJson((String) redisUtil.get(loginUserKey), LoginUser.class);
-                request.setAttribute(CacheConstants.USER_ATTRIBUTE + token, loginUser);
+                request.setAttribute(CacheConstant.USER_ATTRIBUTE + token, loginUser);
                 return true;
             } else {
                 ResponseData rd = new ResponseData.Builder().fail("登录失效，请重新登录!").build();
