@@ -16,3 +16,20 @@ spring:
           username: Cditv
           password: CD@.Ipt@v028
           driver-class-name: com.mysql.cj.jdbc.Driver
+        local:
+          url: jdbc:mysql://localhost:3306/test?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
+          username: root
+          password: 123456
+          driver-class-name: com.mysql.cj.jdbc.Driver
+    druid:
+      initial-size: 1
+      min-idle: 1
+      max-active: 5
+      max-wait: 3000
+      time-between-eviction-runs-millis: 10000
+      min-evictable-idle-time-millis: 8000
+      validation-query: SELECT 1
+      test-while-idle: true
+      test-on-borrow: false
+      test-on-return: false
+      
