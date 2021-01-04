@@ -32,4 +32,6 @@ spring:
       test-while-idle: true
       test-on-borrow: false
       test-on-return: false
-      
+  data:
+    mongodb:
+      uri: mongodb://testRoot:123456@localhost:27017/test
